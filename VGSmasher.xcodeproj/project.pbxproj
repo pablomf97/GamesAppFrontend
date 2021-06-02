@@ -19,6 +19,8 @@
 		A4F00C262666AA0300A35F27 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C252666AA0300A35F27 /* AccountView.swift */; };
 		A4F00C2A2666AB7E00A35F27 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C292666AB7E00A35F27 /* ViewRouter.swift */; };
 		A4F00C2E2666B36500A35F27 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C2D2666B36500A35F27 /* TabbedView.swift */; };
+		A4F00C352667A98F00A35F27 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C342667A98F00A35F27 /* Utils.swift */; };
+		A4F00C382667B57400A35F27 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C372667B57400A35F27 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		A4F00C252666AA0300A35F27 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A4F00C292666AB7E00A35F27 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		A4F00C2D2666B36500A35F27 /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
+		A4F00C342667A98F00A35F27 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A4F00C372667B57400A35F27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 		A449FC2F2666263C00D9CD47 /* VGSmasher */ = {
 			isa = PBXGroup;
 			children = (
+				A4F00C362667B55C00A35F27 /* Data */,
+				A4F00C332667A96E00A35F27 /* Utils */,
 				A4F00C162666A6F600A35F27 /* Views */,
 				A449FC302666263C00D9CD47 /* VGSmasherApp.swift */,
 				A449FC322666263C00D9CD47 /* ContentView.swift */,
@@ -134,6 +140,7 @@
 		A4F00C272666AA0A00A35F27 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				A4F00C302667991D00A35F27 /* Login */,
 				A4F00C1F2666A96800A35F27 /* UserFormView.swift */,
 			);
 			path = Forms;
@@ -163,6 +170,29 @@
 				A4F00C2D2666B36500A35F27 /* TabbedView.swift */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		A4F00C302667991D00A35F27 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A4F00C332667A96E00A35F27 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A4F00C342667A98F00A35F27 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A4F00C362667B55C00A35F27 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A4F00C372667B57400A35F27 /* DataSource.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +270,9 @@
 				A4F00C242666A98D00A35F27 /* GamesView.swift in Sources */,
 				A449FC312666263C00D9CD47 /* VGSmasherApp.swift in Sources */,
 				A4F00C262666AA0300A35F27 /* AccountView.swift in Sources */,
+				A4F00C382667B57400A35F27 /* DataSource.swift in Sources */,
 				A4F00C222666A98000A35F27 /* NewsView.swift in Sources */,
+				A4F00C352667A98F00A35F27 /* Utils.swift in Sources */,
 				A4F00C2E2666B36500A35F27 /* TabbedView.swift in Sources */,
 				A4F00C182666A71000A35F27 /* RootView.swift in Sources */,
 				A4F00C1E2666A94A00A35F27 /* WelcomeView.swift in Sources */,

@@ -9,5 +9,13 @@ import Foundation
 import SwiftUI
 
 class ViewRouter: ObservableObject {
-    @Published var currentPage: RootPage = .anonymous
+    @Published var currentPage: RootPage
+    
+    init() {
+        if let _ = UserDefaults.init().string(forKey: "token") {
+            currentPage = .loggedIn
+        } else {
+            currentPage = .anonymous
+        }
+    }
 }

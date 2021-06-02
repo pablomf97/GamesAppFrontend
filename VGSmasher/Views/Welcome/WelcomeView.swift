@@ -16,6 +16,7 @@ struct WelcomeView: View {
                 Image("GameController")
                     .resizable()
                     .frame(width: 170, height: 170, alignment: .center)
+                    .shadow(color: .gray, radius: 3, x: 4, y: 4)
                 
                 Text("Welcome to VGSmasher!")
                     .font(.title)
@@ -26,7 +27,7 @@ struct WelcomeView: View {
                     .foregroundColor(Color("PrimaryColor"))
                                 
                 NavigationLink(
-                    destination: UserFormView(),
+                    destination: UserFormView(viewRouter: viewRouter, formType: .login),
                     label: {
                         Text("Sign in")
                             .foregroundColor(.white)
@@ -40,7 +41,7 @@ struct WelcomeView: View {
                     .padding()
                 
                 NavigationLink(
-                    destination: UserFormView(),
+                    destination: UserFormView(viewRouter: viewRouter, formType: .registration),
                     label: {
                         Text("Sign up")
                             .foregroundColor(Color("PrimaryColor"))
