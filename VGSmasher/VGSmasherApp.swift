@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct VGSmasherApp: App {
+    @StateObject var viewRouter = ViewRouter()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(viewRouter: viewRouter)
         }
     }
 }
