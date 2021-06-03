@@ -11,6 +11,8 @@
 		A449FC332666263C00D9CD47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A449FC322666263C00D9CD47 /* ContentView.swift */; };
 		A449FC352666263E00D9CD47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A449FC342666263E00D9CD47 /* Assets.xcassets */; };
 		A449FC382666263E00D9CD47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A449FC372666263E00D9CD47 /* Preview Assets.xcassets */; };
+		A45B67752668CB21000DE4ED /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B67742668CB21000DE4ED /* LoginView.swift */; };
+		A45B67782668CE6C000DE4ED /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B67772668CE6C000DE4ED /* RegistrationView.swift */; };
 		A4F00C182666A71000A35F27 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C172666A71000A35F27 /* RootView.swift */; };
 		A4F00C1E2666A94A00A35F27 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C1D2666A94A00A35F27 /* WelcomeView.swift */; };
 		A4F00C202666A96800A35F27 /* UserFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C1F2666A96800A35F27 /* UserFormView.swift */; };
@@ -30,6 +32,8 @@
 		A449FC342666263E00D9CD47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A449FC372666263E00D9CD47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A449FC392666263E00D9CD47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A45B67742668CB21000DE4ED /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A45B67772668CE6C000DE4ED /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		A4F00C172666A71000A35F27 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A4F00C1D2666A94A00A35F27 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A4F00C1F2666A96800A35F27 /* UserFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFormView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A45B67762668CE55000DE4ED /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				A45B67772668CE6C000DE4ED /* RegistrationView.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		A4F00C162666A6F600A35F27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +152,7 @@
 		A4F00C272666AA0A00A35F27 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				A45B67762668CE55000DE4ED /* Registration */,
 				A4F00C302667991D00A35F27 /* Login */,
 				A4F00C1F2666A96800A35F27 /* UserFormView.swift */,
 			);
@@ -175,6 +188,7 @@
 		A4F00C302667991D00A35F27 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A45B67742668CB21000DE4ED /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -267,6 +281,7 @@
 				A4F00C2A2666AB7E00A35F27 /* ViewRouter.swift in Sources */,
 				A4F00C202666A96800A35F27 /* UserFormView.swift in Sources */,
 				A449FC332666263C00D9CD47 /* ContentView.swift in Sources */,
+				A45B67782668CE6C000DE4ED /* RegistrationView.swift in Sources */,
 				A4F00C242666A98D00A35F27 /* GamesView.swift in Sources */,
 				A449FC312666263C00D9CD47 /* VGSmasherApp.swift in Sources */,
 				A4F00C262666AA0300A35F27 /* AccountView.swift in Sources */,
@@ -274,6 +289,7 @@
 				A4F00C222666A98000A35F27 /* NewsView.swift in Sources */,
 				A4F00C352667A98F00A35F27 /* Utils.swift in Sources */,
 				A4F00C2E2666B36500A35F27 /* TabbedView.swift in Sources */,
+				A45B67752668CB21000DE4ED /* LoginView.swift in Sources */,
 				A4F00C182666A71000A35F27 /* RootView.swift in Sources */,
 				A4F00C1E2666A94A00A35F27 /* WelcomeView.swift in Sources */,
 			);
