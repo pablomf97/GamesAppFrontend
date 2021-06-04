@@ -11,7 +11,7 @@ struct TabbedView: View {
     @StateObject var viewRouter: ViewRouter
     var body: some View {
         TabView {
-            GamesView()
+            TopGamesView()
                 .tabItem {
                     Image(systemName: "gamecontroller.fill")
                     Text("Games")
