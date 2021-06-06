@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class DataSource {
     
@@ -100,6 +101,59 @@ class DataSource {
             } else {
                 // Handle unexpected error
                 onComplete([])
+            }
+        }.resume()
+    }
+    
+    func getGameByUrl(game_url: String, onComplete: @escaping (Game?) -> Void) {
+        let url = URL(string: baseUrl + "games/game")!
+        var request = URLRequest(url: url)
+
+        guard let token = UserDefaults.init().string(forKey: "token") else {
+            onComplete(nil)
+            return
+        }
+        
+        request.httpMethod = "POST"
+        request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+
+        let body = ["game_href": game_url]
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        
+//        var headers = HTTPHeaders()
+//        headers.add(HTTPHeader(name: "Content-Type", value: "application/json"))
+//        headers.add(HTTPHeader(name: "Authorization", value: "Token \(token)"))
+//
+//        AF.request(url, method: .get, parameters: ["game_href": game_url], encoder: JSONParameterEncoder.default, headers: headers).responseJSON { response in
+//            switch response.result  {
+//            case .success(_):
+//                if let json = response.value {
+//                    let game = Game(json as! [String:AnyObject])
+//                    onComplete(game)
+//                }
+//                break
+//            case .failure(_):
+//                onComplete(nil)
+//                break
+//            }
+//        }
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // Handle HTTP request error
+                onComplete(nil)
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let responseJSON = responseJSON as? [String: Any] else {
+                    onComplete(nil)
+                    return
+                }
+
+                onComplete(Game(responseJSON))
+            } else {
+                // Handle unexpected error
+                onComplete(nil)
             }
         }.resume()
     }

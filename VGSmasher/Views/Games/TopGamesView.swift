@@ -30,7 +30,7 @@ struct TopGamesView: View {
                         LazyVStack {
                             ForEach(viewModel.games, id: \.self) { game in
                                 // TODO: GAME INFO
-                                NavigationLink(destination: GamesView()) {
+                                NavigationLink(destination: GameView(url: game.href)) {
                                     VStack {
                                         HStack {
                                             Text(game.name)
@@ -61,7 +61,8 @@ struct TopGamesView: View {
                             }.padding(.horizontal).padding(.top, 5)
                         }
                     }
-                }.navigationBarTitle("Top games")
+                }
+                .navigationBarTitle("Top games")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: { viewModel.getTopGames() }, label: {
