@@ -9,25 +9,39 @@ import SwiftUI
 
 struct TabbedView: View {
     @StateObject var viewRouter: ViewRouter
+    @State private var selection = 0
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             TopGamesView()
                 .tabItem {
                     Image(systemName: "gamecontroller.fill")
                     Text("Games")
                 }
+                .onTapGesture(perform: {
+                    selection = 0
+                })
+                .tag(0)
             
             NewsView()
                 .tabItem {
                     Image(systemName: "newspaper.fill")
                     Text("News")
                 }
+                .onTapGesture(perform: {
+                    selection = 1
+                })
+                .tag(1)
             
             AccountView(viewRouter: viewRouter)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Account")
                 }
+                .onTapGesture(perform: {
+                    selection = 2
+                })
+                .tag(2)
         }
     }
 }

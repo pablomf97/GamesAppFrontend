@@ -147,6 +147,7 @@ struct GameView: View {
                 .background(Color("BrokenWhite"))
                 .cornerRadius(16)
                 .shadow(color: .gray, radius: 3, x: 3, y: 3)
+                                    
             } else {
                 if viewModel.error {
                     Text("Oops! We could not get the game you were looking for. Please try again in a few seconds!")

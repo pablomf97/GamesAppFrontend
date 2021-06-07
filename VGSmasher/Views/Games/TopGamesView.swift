@@ -13,55 +13,51 @@ struct TopGamesView: View {
     
     var body: some View {
         NavigationView {
-            if viewModel.isLoading {
-                ProgressView("Looking for games...")
-                    .foregroundColor(Color("PrimaryColor"))
-                    .progressViewStyle(CircularProgressViewStyle(tint: Color("PrimaryColor")))
+            
+            switch viewModel.state {
+            case .idle:
+                Text("Waiting...")
                     .onAppear(perform: {
                         viewModel.getTopGames()
                     })
-            } else {
+            case .loading:
+                ProgressView("Looking for games...")
+            case .loaded:
                 ScrollView {
-                    if viewModel.error {
-                        Text("Whoops! Could not find any game. Hit that refresh button to try again!")
-                            .font(.title2)
-                            .padding()
-                    } else {
-                        LazyVStack {
-                            ForEach(viewModel.games, id: \.self) { game in
-                                // TODO: GAME INFO
-                                NavigationLink(destination: GameView(url: game.href)) {
-                                    VStack {
-                                        HStack {
-                                            Text(game.name)
-                                                .font(.title2)
-                                                .fontWeight(.medium)
-                                                .foregroundColor(.black)
-                                            Spacer()
-                                        }
-
-                                        HStack(alignment: .lastTextBaseline) {
-                                            Spacer()
-                                            Text("In " + game.merchant + " for")
-                                                .font(.footnote)
-                                                .foregroundColor(.black)
-                                            Text(game.price)
-                                                .font(.title)
-                                                .fontWeight(.medium)
-                                                .foregroundColor(.black)
-                                        }
-
+                    LazyVStack {
+                        ForEach(viewModel.games, id: \.self) { game in
+                            NavigationLink(destination: GameView(url: game.href)) {
+                                VStack {
+                                    HStack {
+                                        Text(game.name)
+                                            .font(.title2)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(.black)
+                                        Spacer()
                                     }
-                                    .frame(maxWidth: .infinity)
-                                    .padding(10)
-                                    .background(Color("BrokenWhite"))
-                                    .cornerRadius(6)
-                                    .shadow(color: .gray, radius: 3, x: 2, y: 2)
+
+                                    HStack(alignment: .lastTextBaseline) {
+                                        Spacer()
+                                        Text("In " + game.merchant + " for")
+                                            .font(.footnote)
+                                            .foregroundColor(.black)
+                                        Text(game.price)
+                                            .font(.title)
+                                            .fontWeight(.medium)
+                                            .foregroundColor(.black)
+                                    }
+
                                 }
-                            }.padding(.horizontal).padding(.top, 5)
-                        }
+                                .frame(maxWidth: .infinity)
+                                .padding(10)
+                                .background(Color("BrokenWhite"))
+                                .cornerRadius(6)
+                                .shadow(color: .gray, radius: 3, x: 2, y: 2)
+                            }
+                        }.padding(.horizontal).padding(.top, 5)
                     }
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
                 .navigationBarTitle("Top games")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -70,6 +66,10 @@ struct TopGamesView: View {
                         })
                     }
                 }
+            case .error:
+                Text("Whoops! Could not find any game. Hit that refresh button to try again!")
+                    .font(.title2)
+                    .padding()
             }
         }
     }
@@ -77,22 +77,24 @@ struct TopGamesView: View {
 
 extension TopGamesView {
     class ViewModel: ObservableObject {
-        @Published var games = [GameListItem]()
-        @Published var isLoading = true
-        @Published var error = false
+        enum State { case idle, loading, loaded, error }
+        
+        @Published private(set) var state = State.idle
+        var games = [GameListItem]()
+        
+        func idle() {
+            self.state = .idle
+        }
         
         func getTopGames() {
-            isLoading = true
+            state = .loading
             DataSource().getTopGames(onComplete: { games in
                 DispatchQueue.main.async {
                     if !games.isEmpty {
                         self.games = games
-                        
-                        self.isLoading = false
-                        self.error = false
+                        self.state = .loaded
                     } else {
-                        self.error = true
-                        self.isLoading = false
+                        self.state = .error
                     }
                 }
             })

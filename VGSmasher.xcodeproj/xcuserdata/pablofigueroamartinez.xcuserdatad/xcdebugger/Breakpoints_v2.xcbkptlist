@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5551901A-4D50-4F65-8CA3-03DD8A66B688"
+            uuid = "FB68BD91-7C98-49D5-9458-E73488057ECD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VGSmasher/Views/News/NewsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getNews(selected:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A08BCF4-FDAC-417D-86B9-15D1259F9268"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VGSmasher/Data/DataSource.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "getGameOffersByUrl(game_url:onComplete:)"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "getNews(_:onComplete:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

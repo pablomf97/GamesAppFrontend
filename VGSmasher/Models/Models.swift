@@ -76,3 +76,31 @@ struct OfferRowItem: Identifiable, Codable, Hashable {
         shopUrl = dictionary["shop_url"] as? String ?? ""
     }
 }
+
+struct NewsRowItem: Identifiable, Codable, Hashable {
+    let id: UUID
+    let picture: String
+    let headline: String
+    let category: String
+    let contentPreview: String
+    let link: String
+
+    init(_ dictionary: [String: Any]) {
+        id = UUID()
+        picture = dictionary["picture"] as? String ?? ""
+        headline = dictionary["headline"] as? String ?? ""
+        category = dictionary["category"] as? String ?? ""
+        contentPreview = dictionary["content_preview"] as? String ?? ""
+        link = dictionary["link"] as? String ?? ""
+    }
+    
+    enum NewsType: String {
+        case deals = "deals"
+        case rewards = "rewards"
+        case giveaway = "giveaway"
+        case gaming = "gaming"
+        case charity = "charity"
+        case top = "top"
+        case all = ""
+    }
+}
