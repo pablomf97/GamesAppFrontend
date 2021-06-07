@@ -125,7 +125,7 @@ struct GameView: View {
                 .cornerRadius(16)
                 .shadow(color: .gray, radius: 3, x: 3, y: 3)
                 
-                NavigationLink(destination: NewsView()) {
+                NavigationLink(destination: OfferListView(gameUrl: self.url)) {
                     
                     HStack {
                         Text("Load offers")

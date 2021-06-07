@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A40EB3D926692D1D004116DC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40EB3D826692D1D004116DC /* Models.swift */; };
 		A40EB3DB266932F1004116DC /* TopGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40EB3DA266932F1004116DC /* TopGamesView.swift */; };
+		A4261E7A266D212D00896238 /* OfferListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4261E79266D212D00896238 /* OfferListView.swift */; };
 		A449FC312666263C00D9CD47 /* VGSmasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A449FC302666263C00D9CD47 /* VGSmasherApp.swift */; };
 		A449FC332666263C00D9CD47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A449FC322666263C00D9CD47 /* ContentView.swift */; };
 		A449FC352666263E00D9CD47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A449FC342666263E00D9CD47 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		A45B67752668CB21000DE4ED /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B67742668CB21000DE4ED /* LoginView.swift */; };
 		A45B67782668CE6C000DE4ED /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B67772668CE6C000DE4ED /* RegistrationView.swift */; };
 		A494B954266BE81E006F1CDA /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A494B953266BE81E006F1CDA /* URLImage.swift */; };
-		A494B957266CF23D006F1CDA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A494B956266CF23D006F1CDA /* Alamofire */; };
 		A4F00C182666A71000A35F27 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C172666A71000A35F27 /* RootView.swift */; };
 		A4F00C1E2666A94A00A35F27 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C1D2666A94A00A35F27 /* WelcomeView.swift */; };
 		A4F00C202666A96800A35F27 /* UserFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C1F2666A96800A35F27 /* UserFormView.swift */; };
@@ -32,6 +32,7 @@
 /* Begin PBXFileReference section */
 		A40EB3D826692D1D004116DC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		A40EB3DA266932F1004116DC /* TopGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGamesView.swift; sourceTree = "<group>"; };
+		A4261E79266D212D00896238 /* OfferListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferListView.swift; sourceTree = "<group>"; };
 		A449FC2D2666263C00D9CD47 /* VGSmasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VGSmasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A449FC302666263C00D9CD47 /* VGSmasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VGSmasherApp.swift; sourceTree = "<group>"; };
 		A449FC322666263C00D9CD47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A494B957266CF23D006F1CDA /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +139,7 @@
 			children = (
 				A40EB3DA266932F1004116DC /* TopGamesView.swift */,
 				A4F00C232666A98D00A35F27 /* GameView.swift */,
+				A4261E79266D212D00896238 /* OfferListView.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 			);
 			name = VGSmasher;
 			packageProductDependencies = (
-				A494B956266CF23D006F1CDA /* Alamofire */,
 			);
 			productName = VGSmasher;
 			productReference = A449FC2D2666263C00D9CD47 /* VGSmasher.app */;
@@ -275,7 +275,6 @@
 			);
 			mainGroup = A449FC242666263C00D9CD47;
 			packageReferences = (
-				A494B955266CF23D006F1CDA /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = A449FC2E2666263C00D9CD47 /* Products */;
 			projectDirPath = "";
@@ -308,6 +307,7 @@
 				A449FC332666263C00D9CD47 /* ContentView.swift in Sources */,
 				A45B67782668CE6C000DE4ED /* RegistrationView.swift in Sources */,
 				A4F00C242666A98D00A35F27 /* GameView.swift in Sources */,
+				A4261E7A266D212D00896238 /* OfferListView.swift in Sources */,
 				A449FC312666263C00D9CD47 /* VGSmasherApp.swift in Sources */,
 				A4F00C262666AA0300A35F27 /* AccountView.swift in Sources */,
 				A4F00C382667B57400A35F27 /* DataSource.swift in Sources */,
@@ -508,25 +508,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A494B955266CF23D006F1CDA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A494B956266CF23D006F1CDA /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A494B955266CF23D006F1CDA /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A449FC252666263C00D9CD47 /* Project object */;
 }

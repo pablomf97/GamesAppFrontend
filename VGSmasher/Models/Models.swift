@@ -58,3 +58,21 @@ struct GameListItem: Identifiable, Codable, Hashable {
         href = dictionary["href"] as? String ?? ""
     }
 }
+
+struct OfferRowItem: Identifiable, Codable, Hashable {
+    let id: UUID
+    let shop: String
+    let platform: String
+    let edition: String
+    let priceBeforeFees: String
+    let shopUrl: String
+    
+    init(_ dictionary: [String: Any]) {
+        id = UUID()
+        shop = dictionary["shop"] as? String ?? ""
+        platform = dictionary["platform"] as? String ?? ""
+        edition = dictionary["edition"] as? String ?? ""
+        priceBeforeFees = dictionary["price_before_fees"] as? String ?? ""
+        shopUrl = dictionary["shop_url"] as? String ?? ""
+    }
+}
