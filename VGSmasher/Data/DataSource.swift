@@ -43,6 +43,41 @@ class DataSource {
         }.resume()
     }
     
+    func logout(onComplete: @escaping (Any?) -> Void) {
+        // For testing use:
+        // let url = URL(string: "http://127.0.0.1:8000/user/logout")!
+        
+        // On production use:
+        let url = URL(string: baseUrl + "user/logout/")!
+        var request = URLRequest(url: url)
+                
+        guard let token = UserDefaults.init().string(forKey: "token") else {
+            onComplete([])
+            return
+        }
+        
+        request.httpMethod = "GET"
+        request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                // Handle HTTP request error
+                onComplete(error)
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any] {
+                    onComplete(responseJSON["message"])
+                } else {
+                    onComplete(nil)
+                }
+            } else {
+                // Handle unexpected error
+                onComplete(nil)
+            }
+        }.resume()
+    }
+    
     func register(username: String, email: String, password: String, password2: String, onComplete: @escaping (Any?) -> Void) {
         // For testing use:
         // let url = URL(string: "http://127.0.0.1:8000/user/register")!
