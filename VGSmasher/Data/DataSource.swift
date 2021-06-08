@@ -13,7 +13,7 @@ class DataSource {
     
     func login(username: String, password: String, onComplete: @escaping (Any?) -> Void) {
         // For testing use:
-        // let url = URL(string: "http://127.0.0.1:8000/" + "user/login")!
+        // let url = URL(string: "http://127.0.0.1:8000/user/login")!
         
         // On production use:
         let url = URL(string: baseUrl + "user/login/")!
@@ -45,7 +45,7 @@ class DataSource {
     
     func register(username: String, email: String, password: String, password2: String, onComplete: @escaping (Any?) -> Void) {
         // For testing use:
-        // let url = URL(string: "http://127.0.0.1:8000/" + "user/register")!
+        // let url = URL(string: "http://127.0.0.1:8000/user/register")!
         
         // On production use:
         let url = URL(string: baseUrl + "user/register/")!
@@ -78,7 +78,7 @@ class DataSource {
     
     func getTopGames(onComplete: @escaping ([GameListItem]) -> Void) {
         // For testing use:
-        // let url = URL(string: "http://127.0.0.1:8000/" + "games/top-25")!
+        // let url = URL(string: "http://127.0.0.1:8000/games/top-25")!
         
         // On production use:
         let url = URL(string: baseUrl + "games/top-25")!
@@ -118,7 +118,7 @@ class DataSource {
     
     func getGameByUrl(game_url: String, onComplete: @escaping (Game?) -> Void) {
         // For testing use:
-        // let url = URL(string: "http://127.0.0.1:8000/" + "games/game")!
+        // let url = URL(string: "http://127.0.0.1:8000/games/game")!
         
         // On production use:
         let url = URL(string: baseUrl + "games/game")!
@@ -158,10 +158,10 @@ class DataSource {
     
     func getGameOffersByUrl(game_url: String, onComplete: @escaping ([OfferRowItem]) -> Void) {
         // For testing use:
-        // let url = URL(string: "http://127.0.0.1:8000/" + "games/game/offers")!
+        // let url = URL(string: "http://127.0.0.1:8000/games/game/offers")!
         
         // On production use:
-        let url = URL(string: baseUrl + "games/game")!
+        let url = URL(string: baseUrl + "games/game/offers")!
         
         var request = URLRequest(url: url)
 
@@ -203,7 +203,7 @@ class DataSource {
     
     func getNews(_ type: NewsRowItem.NewsType , onComplete: @escaping ([NewsRowItem]) -> Void) {
         // For testing use:
-        // let url = URL(string: "http://127.0.0.1:8000/" + "games/game/offers")!
+        // let url = URL(string: "http://127.0.0.1:8000/news/\(type.rawValue)")!
         
         // On production use:
         let url = URL(string: baseUrl + "news/\(type.rawValue)")!
@@ -241,4 +241,126 @@ class DataSource {
             }
         }.resume()
     }
+    
+    func isFavourite(gameId: String, onComplete: @escaping (Bool?) -> Void) {
+        // For testing use:
+        // let url = URL(string: "http://127.0.0.1:8000/user/is-favourited/\(gameId)/")!
+        
+        // On production use:
+        let url = URL(string: baseUrl + "user/is-favourited/\(gameId)/")!
+        
+        var request = URLRequest(url: url)
+
+        guard let token = UserDefaults.init().string(forKey: "token") else {
+            onComplete(nil)
+            return
+        }
+        
+        request.httpMethod = "GET"
+        request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        
+        // TODO: Check if game is favourited
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // Handle HTTP request error
+                onComplete(nil)
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let responseJSON = responseJSON as? [String: Any] else {
+                    onComplete(nil)
+                    return
+                }
+
+                let isFavourited = responseJSON["is_favourited"] as? Bool
+                onComplete(isFavourited)
+            } else {
+                // Handle unexpected error
+                onComplete(nil)
+            }
+        }.resume()
+    }
+    
+    func addGameToFavourites(gameId: String, onComplete: @escaping (Bool?) -> Void) {
+        // For testing use:
+        // let url = URL(string: "http://127.0.0.1:8000/user/add-game/\(gameId)/")!
+        
+        // On production use:
+        let url = URL(string: baseUrl + "user/add-game/\(gameId)/")!
+        
+        var request = URLRequest(url: url)
+
+        guard let token = UserDefaults.init().string(forKey: "token") else {
+            onComplete(nil)
+            return
+        }
+        
+        request.httpMethod = "GET"
+        request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        
+        // TODO: Check if game is favourited
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // Handle HTTP request error
+                onComplete(nil)
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let responseJSON = responseJSON as? [String: Any] else {
+                    onComplete(nil)
+                    return
+                }
+
+                let message = responseJSON["message"] as! String
+                if message == "Game successfully added to saved games." {
+                    onComplete(true)
+                } else {
+                    onComplete(nil)
+                }
+            } else {
+                // Handle unexpected error
+                onComplete(nil)
+            }
+        }.resume()
+    }
+    
+    func removeGameFromFavourites(gameId: String, onComplete: @escaping (Bool?) -> Void) {
+        // For testing use:
+        // let url = URL(string: "http://127.0.0.1:8000/user/remove-game/\(gameId)/")!
+        
+        // On production use:
+        let url = URL(string: baseUrl + "user/remove-game/\(gameId)/")!
+        
+        var request = URLRequest(url: url)
+
+        guard let token = UserDefaults.init().string(forKey: "token") else {
+            onComplete(nil)
+            return
+        }
+        
+        request.httpMethod = "GET"
+        request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        
+        // TODO: Check if game is favourited
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // Handle HTTP request error
+                onComplete(nil)
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                guard let responseJSON = responseJSON as? [String: Any] else {
+                    onComplete(nil)
+                    return
+                }
+
+                let success = responseJSON["success"] as? Bool
+                onComplete(success)
+            } else {
+                // Handle unexpected error
+                onComplete(nil)
+            }
+        }.resume()
+    }
+    
 }

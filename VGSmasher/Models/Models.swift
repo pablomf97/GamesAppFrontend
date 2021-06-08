@@ -24,7 +24,7 @@ struct Game: Identifiable, Codable {
     let mediaRating: String
     
     init(_ dictionary: [String: Any]) {
-        id = dictionary["id"] as? String ?? ""
+        id = dictionary["id"] as? String ?? UUID().uuidString
         name = dictionary["name"] as? String ?? ""
         releaseDate = dictionary["release_date"] as? String ?? ""
         officialWebsite = dictionary["official_website"] as? String ?? ""
