@@ -17,6 +17,8 @@
 		A45B67752668CB21000DE4ED /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B67742668CB21000DE4ED /* LoginView.swift */; };
 		A45B67782668CE6C000DE4ED /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B67772668CE6C000DE4ED /* RegistrationView.swift */; };
 		A494B954266BE81E006F1CDA /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A494B953266BE81E006F1CDA /* URLImage.swift */; };
+		A49EFC022670D44C00CBCFAA /* AppPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49EFC012670D44C00CBCFAA /* AppPolicyView.swift */; };
+		A49EFC042671109000CBCFAA /* MyGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49EFC032671109000CBCFAA /* MyGamesView.swift */; };
 		A4F00C182666A71000A35F27 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C172666A71000A35F27 /* RootView.swift */; };
 		A4F00C1E2666A94A00A35F27 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C1D2666A94A00A35F27 /* WelcomeView.swift */; };
 		A4F00C202666A96800A35F27 /* UserFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C1F2666A96800A35F27 /* UserFormView.swift */; };
@@ -42,6 +44,8 @@
 		A45B67742668CB21000DE4ED /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A45B67772668CE6C000DE4ED /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		A494B953266BE81E006F1CDA /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
+		A49EFC012670D44C00CBCFAA /* AppPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPolicyView.swift; sourceTree = "<group>"; };
+		A49EFC032671109000CBCFAA /* MyGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGamesView.swift; sourceTree = "<group>"; };
 		A4F00C172666A71000A35F27 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A4F00C1D2666A94A00A35F27 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A4F00C1F2666A96800A35F27 /* UserFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFormView.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				A4F00C252666AA0300A35F27 /* AccountView.swift */,
+				A49EFC012670D44C00CBCFAA /* AppPolicyView.swift */,
+				A49EFC032671109000CBCFAA /* MyGamesView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			files = (
 				A4F00C2A2666AB7E00A35F27 /* ViewRouter.swift in Sources */,
 				A4F00C202666A96800A35F27 /* UserFormView.swift in Sources */,
+				A49EFC022670D44C00CBCFAA /* AppPolicyView.swift in Sources */,
 				A449FC332666263C00D9CD47 /* ContentView.swift in Sources */,
 				A45B67782668CE6C000DE4ED /* RegistrationView.swift in Sources */,
 				A4F00C242666A98D00A35F27 /* GameView.swift in Sources */,
@@ -311,6 +318,7 @@
 				A449FC312666263C00D9CD47 /* VGSmasherApp.swift in Sources */,
 				A4F00C262666AA0300A35F27 /* AccountView.swift in Sources */,
 				A4F00C382667B57400A35F27 /* DataSource.swift in Sources */,
+				A49EFC042671109000CBCFAA /* MyGamesView.swift in Sources */,
 				A494B954266BE81E006F1CDA /* URLImage.swift in Sources */,
 				A40EB3DB266932F1004116DC /* TopGamesView.swift in Sources */,
 				A4F00C222666A98000A35F27 /* NewsView.swift in Sources */,

@@ -398,4 +398,48 @@ class DataSource {
         }.resume()
     }
     
+    func getMyGames(onComplete: @escaping ([Game]) -> Void) {
+        // For testing use:
+        // let url = URL(string: "http://127.0.0.1:8000/user/get-games/")!
+        
+        // On production use:
+        let url = URL(string: baseUrl + "user/get-games/")!
+        var request = URLRequest(url: url)
+        
+        guard let token = UserDefaults.init().string(forKey: "token") else {
+            onComplete([])
+            return
+        }
+        
+        request.httpMethod = "GET"
+        request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                // Handle HTTP request error
+                onComplete([])
+            } else if let data = data {
+                // Handle HTTP request response
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any] {
+                    guard let response = responseJSON["results"] as? [[String: Any]] else {
+                        onComplete([])
+                        return
+                    }
+                    var games: [Game] = []
+                    
+                    for JSONObject in response {
+                        games.append(Game(JSONObject))
+                    }
+                    
+                    onComplete(games)
+                } else {
+                    onComplete([])
+                }
+            } else {
+                // Handle unexpected error
+                onComplete([])
+            }
+        }.resume()
+    }
 }
