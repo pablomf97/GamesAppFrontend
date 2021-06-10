@@ -398,16 +398,26 @@ class DataSource {
         }.resume()
     }
     
-    func getMyGames(onComplete: @escaping ([Game]) -> Void) {
+    func getMyGames(next: String?, previous: String?, onComplete: @escaping ([Game], String?, String?) -> Void) {
+        let requestUrl: String
+        if let next = next {
+            requestUrl = next
+        } else if let previous = previous {
+            requestUrl = previous
+        } else {
+            requestUrl = baseUrl + "user/get-games/"
+        }
+        
         // For testing use:
         // let url = URL(string: "http://127.0.0.1:8000/user/get-games/")!
         
         // On production use:
-        let url = URL(string: baseUrl + "user/get-games/")!
+        let url = URL(string: requestUrl)!
+        
         var request = URLRequest(url: url)
         
         guard let token = UserDefaults.init().string(forKey: "token") else {
-            onComplete([])
+            onComplete([], nil, nil)
             return
         }
         
@@ -417,13 +427,13 @@ class DataSource {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if error != nil {
                 // Handle HTTP request error
-                onComplete([])
+                onComplete([], nil, nil)
             } else if let data = data {
                 // Handle HTTP request response
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String: Any] {
                     guard let response = responseJSON["results"] as? [[String: Any]] else {
-                        onComplete([])
+                        onComplete([], nil, nil)
                         return
                     }
                     var games: [Game] = []
@@ -432,13 +442,16 @@ class DataSource {
                         games.append(Game(JSONObject))
                     }
                     
-                    onComplete(games)
+                    let next = responseJSON["next"] as? String
+                    let previous = responseJSON["previous"] as? String
+
+                    onComplete(games, next, previous)
                 } else {
-                    onComplete([])
+                    onComplete([], nil, nil)
                 }
             } else {
                 // Handle unexpected error
-                onComplete([])
+                onComplete([], nil, nil)
             }
         }.resume()
     }

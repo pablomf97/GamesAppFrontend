@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabbedView: View {
     @StateObject var viewRouter: ViewRouter
-    @State private var selection = 0
+    @State private var selection = 2
     
     var body: some View {
         TabView(selection: $selection) {
