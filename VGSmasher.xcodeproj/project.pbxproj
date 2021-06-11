@@ -29,6 +29,7 @@
 		A4F00C2E2666B36500A35F27 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C2D2666B36500A35F27 /* TabbedView.swift */; };
 		A4F00C352667A98F00A35F27 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C342667A98F00A35F27 /* Utils.swift */; };
 		A4F00C382667B57400A35F27 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F00C372667B57400A35F27 /* DataSource.swift */; };
+		A4F4444526734E69001FAB1C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F4444426734E69001FAB1C /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A4F00C2D2666B36500A35F27 /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		A4F00C342667A98F00A35F27 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A4F00C372667B57400A35F27 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		A4F4444426734E69001FAB1C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				A40EB3DA266932F1004116DC /* TopGamesView.swift */,
 				A4F00C232666A98D00A35F27 /* GameView.swift */,
 				A4261E79266D212D00896238 /* OfferListView.swift */,
+				A4F4444426734E69001FAB1C /* SearchView.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				A449FC312666263C00D9CD47 /* VGSmasherApp.swift in Sources */,
 				A4F00C262666AA0300A35F27 /* AccountView.swift in Sources */,
 				A4F00C382667B57400A35F27 /* DataSource.swift in Sources */,
+				A4F4444526734E69001FAB1C /* SearchView.swift in Sources */,
 				A49EFC042671109000CBCFAA /* MyGamesView.swift in Sources */,
 				A494B954266BE81E006F1CDA /* URLImage.swift in Sources */,
 				A40EB3DB266932F1004116DC /* TopGamesView.swift in Sources */,

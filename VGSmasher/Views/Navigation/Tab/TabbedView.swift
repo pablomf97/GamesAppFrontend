@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabbedView: View {
     @StateObject var viewRouter: ViewRouter
-    @State private var selection = 2
+    @State private var selection = 0
     
     var body: some View {
         TabView(selection: $selection) {
@@ -22,6 +22,12 @@ struct TabbedView: View {
                     selection = 0
                 })
                 .tag(0)
+            
+            SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
             
             NewsView()
                 .tabItem {

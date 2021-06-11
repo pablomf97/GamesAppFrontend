@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// Extensions
 extension View {
     @ViewBuilder func hidden(_ shouldHide: Bool) -> some View {
         if shouldHide { hidden() }
@@ -15,6 +16,53 @@ extension View {
     }
 }
 
+extension UIApplication {
+    func endEditing(_ force: Bool) {
+        self.windows
+            .filter{$0.isKeyWindow}
+            .first?
+            .endEditing(force)
+    }
+}
+
+// Views
+struct SearchBar: UIViewRepresentable {
+    @Binding var text: String
+    var onTextChanged: (String) -> Void
+    
+    class Coordinator: NSObject, UISearchBarDelegate {
+        var onTextChanged: (String) -> Void
+        @Binding var text: String
+        
+        init(text: Binding<String>, onTextChanged: @escaping (String) -> Void) {
+            _text = text
+            self.onTextChanged = onTextChanged
+        }
+        
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            text = searchText
+            onTextChanged(text)
+        }
+    }
+    
+    func makeCoordinator() -> SearchBar.Coordinator {
+        return Coordinator(text: $text, onTextChanged: onTextChanged)
+    }
+    
+    func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
+        let searchBar = UISearchBar(frame: .zero)
+        searchBar.delegate = context.coordinator
+        searchBar.searchBarStyle = .minimal
+        searchBar.autocapitalizationType = .none
+        return searchBar
+    }
+    
+    func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
+        uiView.text = text
+    }
+}
+
+// Other funcs
 func isValidEmail(_ email: String) -> Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
@@ -48,3 +96,4 @@ func checkRegisterFormValidity(username: String, email: String, password: String
     
     return ["isValid": isValid, "errors": errors]
 }
+
